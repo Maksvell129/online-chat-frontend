@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
-function App() {
+export default function App() {
+  const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {   //урл бэка (ждать пока Боги сделают сервер)
+    onOpen: () => {
+      console.log("Connected!");
+    },
+    onClose: () => {
+      console.log("Disconnected!");
+    }
+  });
+
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "Connecting",
+    [ReadyState.OPEN]: "Open",
+    [ReadyState.CLOSING]: "Closing",
+    [ReadyState.CLOSED]: "Closed",
+    [ReadyState.UNINSTANTIATED]: "Uninstantiated"
+  }[readyState];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <span>The WebSocket is currently {connectionStatus}</span>
+      </div>
   );
 }
-
-export default App;
