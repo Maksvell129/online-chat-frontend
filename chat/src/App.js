@@ -20,8 +20,6 @@ export default function App() {
   }[readyState];
 
   return (
-      <div>
-        <span>The WebSocket is currently {connectionStatus}</span>
-      </div>
+      <Login/>
   );
 }

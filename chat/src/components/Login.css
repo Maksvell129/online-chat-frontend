@@ -108,6 +108,7 @@
 }
 
 .input-1 {
+    padding-left: 10px;
     border-radius: 20px;
     height: 32px;
     left: 191px;
@@ -137,6 +138,7 @@
 }
 
 .input-2 {
+    padding-left: 10px;
     border-radius: 20px;
     height: 32px;
     left: 191px;
