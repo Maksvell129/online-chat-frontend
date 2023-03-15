@@ -1,6 +1,7 @@
 import React from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
-import Login from "./components/Login";
+import LoginPage from "./pages/LoginPage";
+
 export default function App() {
   const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {   //урл бэка (ждать пока Боги сделают сервер)
     onOpen: () => {
@@ -20,6 +21,6 @@ export default function App() {
   }[readyState];
 
   return (
-      <Login/>
+    <LoginPage/>
   );
 }
