@@ -1,0 +1,216 @@
+@import url(https://fonts.googleapis.com/css?family=Abel:400);
+
+:root {
+    background-color: darkgrey;
+    --black: rgba(0,0,0,1);
+    --baltic-sea: rgba(44,44,46,1);
+    --boulder: rgba(122,122,122,1);
+    --gray: rgba(128,128,129,1);
+    --cararra: rgba(236,235,235,1);
+    --baby-powder: rgba(252,252,252,1);
+    --white: rgba(255,255,255,1);
+
+    --font-size-xs: 12px;
+    --font-size-m: 14px;
+    --font-size-s2: 16px;
+    --font-size-m2: 20px;
+
+    --font-family-abel: "Abel";
+}
+
+.abel-normal-boulder-12px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-boulder-14px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-s2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-white-20px {
+    color: var(--white);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-14px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-baltic-sea-20px {
+    color: var(--baltic-sea);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.screen a {
+    display: contents;
+    text-decoration: none;
+}
+
+.container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+.container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.valign-text-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.x3 {
+    align-items: flex-start;
+    background-color: var(--baby-powder);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    height: 965px;
+    position: relative;
+    width: 656px;
+}
+
+.overlap-group {
+    height: 848px;
+    position: relative;
+    width: 656px;
+}
+
+.input-1 {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 32px;
+    left: 191px;
+    position: absolute;
+    top: 352px;
+    width: 273px;
+}
+
+.name {
+    height: 22px;
+    left: 307px;
+    letter-spacing: 0;
+    line-height: 22px;
+    position: absolute;
+    top: 315px;
+    white-space: nowrap;
+}
+
+.button-1 {
+    background-color: #899199;
+    border-radius: 20px;
+    height: 29px;
+    left: 243px;
+    position: absolute;
+    top: 495px;
+    width: 170px;
+}
+
+.input-2 {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 32px;
+    left: 191px;
+    position: absolute;
+    top: 437px;
+    width: 273px;
+}
+
+.name-1 {
+    height: 22px;
+    left: 308px;
+    letter-spacing: 0;
+    line-height: 22px;
+    position: absolute;
+    top: 498px;
+    white-space: nowrap;
+}
+
+.name-2 {
+    height: 22px;
+    left: 290px;
+    letter-spacing: 0;
+    line-height: 22px;
+    position: absolute;
+    top: 401px;
+    white-space: nowrap;
+}
+
+.bar-header {
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 0 1px 0 #00000014;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 56px;
+    padding: 8px 0;
+    width: 656px;
+}
+
+.header-title {
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: 3px;
+    min-height: 20px;
+    text-align: center;
+    width: 560px;
+}
+
+.subheader {
+    letter-spacing: 0;
+    line-height: normal;
+    min-height: 15px;
+    text-align: center;
+    width: 560px;
+}
+
+.chat-container {
+    align-items: flex-start;
+    display: flex;
+    height: 848px;
+    left: 0;
+    overflow: hidden;
+    padding: 172px 0;
+    top: 0;
+    width: 656px;
+}
+
+.left-accessory-avatar {
+    border-radius: 99999px;
+    height: 32px;
+    left: 200px;
+    margin-left: 24px;
+    width: 32px;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
+import LoginPage from "./pages/LoginPage";
 
 export default function App() {
   const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {   //урл бэка (ждать пока Боги сделают сервер)
@@ -20,8 +21,6 @@ export default function App() {
   }[readyState];
 
   return (
-      <div>
-        <span>The WebSocket is currently {connectionStatus}</span>
-      </div>
+    <LoginPage/>
   );
 }
