@@ -14,8 +14,17 @@
     --font-size-m: 14px;
     --font-size-s2: 16px;
     --font-size-m2: 20px;
+    --font-size-xxs: 8px;
 
     --font-family-abel: "Abel";
+}
+
+.abel-normal-black-8px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xxs);
+    font-weight: 400;
+    font-style: normal;
 }
 
 .abel-normal-boulder-12px {
@@ -96,7 +105,7 @@
     border: 1px none;
     display: flex;
     flex-direction: column;
-    height: 965px;
+    height: 960px;
     position: relative;
     width: 656px;
 }
@@ -153,7 +162,9 @@
     letter-spacing: 0;
     line-height: 22px;
     position: absolute;
-    top: 498px;
+    top: 500px;
+    z-index: 1;
+    user-select: contain;
     white-space: nowrap;
 }
 

@@ -1,0 +1,31 @@
+:root {
+    background-color: darkgrey;
+    --cararra: rgba(236, 235, 235, 1);
+}
+
+.ChatRight {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    position: relative;
+    width: 600px;
+}
+
+.MyMessage {
+    background-color: var(--cararra);
+    border-radius: 16px;
+    padding: 8px 16px;
+}
+
+.UserName {
+    text-align: left;
+}
+
+.Text {
+
+}
+
+.SendTime {
+    text-align: right;
+}

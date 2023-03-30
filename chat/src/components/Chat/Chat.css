@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/css?family=Abel:400);
+
+:root {
+    background-color: darkgrey;
+    --black: rgba(0,0,0,1);
+    --baltic-sea: rgba(44,44,46,1);
+    --boulder: rgba(122,122,122,1);
+    --gray: rgba(128,128,129,1);
+    --cararra: rgba(236,235,235,1);
+    --baby-powder: rgba(252,252,252,1);
+    --white: rgba(255,255,255,1);
+
+    --font-size-xs: 12px;
+    --font-size-m: 14px;
+    --font-size-s2: 16px;
+    --font-size-m2: 20px;
+
+    --font-family-abel: "Abel";
+}
+
+.abel-normal-boulder-12px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-boulder-14px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-s2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-14px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-baltic-sea-20px {
+    color: var(--baltic-sea);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.screen a {
+    display: contents;
+    text-decoration: none;
+}
+
+.container-center-horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+.container-center-horizontal > * {
+    flex-shrink: 0;
+    display: flex;
+    pointer-events: auto;
+}
+
+.x4 {
+    align-items: flex-start;
+    background-color: var(--baby-powder);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    height: 960px;
+    position: relative;
+    width: 656px;
+}
+
+.chat-container-ChatPage {
+
+    align-items: flex-start;
+    display: flex;
+    height: 848px;
+    overflow: hidden;
+    width: 656px;
+}
+
+.composer {
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 0px -1px 0px #00000014;
+    display: flex;
+    gap: 7px;
+    height: 56px;
+    justify-content: flex-end;
+    min-width: 656px;
+    position: relative;
+}
+
+.overlap-group1 {
+    height: 58px;
+    position: relative;
+    width: 546px;
+}
+
+.overlap-group2 {
+    align-items: flex-start;
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--cararra);
+    border-radius: 20px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    left: 30px;
+    min-width: 410px;
+    padding: 11px 15px;
+    position: absolute;
+    top: 8px;
+}
+
+.send-a-message {
+    letter-spacing: 0px;
+    line-height: normal;
+    min-height: 18px;
+    width: 515px;
+}
+
+.sendButton {
+    align-items: center;
+    display: flex;
+    padding: 5px 10px;
+    margin: 12px;
+}
+
+

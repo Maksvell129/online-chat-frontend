@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import "../Login/Login.css";
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');       // хуки состояния для отслеживания значений логина и пароля
@@ -36,12 +37,12 @@ const LoginForm = () => {
                 <input type="password" className="input-2" value={password} onChange={handlePasswordChange} />
                 
                 
-                <div className="name-1 valign-text-middle abel-normal-white-20px">
+
+                <button type="submit" className="button-1" onClick={handleSubmit}>
                     <span>
-                        <span className="abel-normal-white-20px">Login</span>
+                        <span className="valign-text-middle abel-normal-white-20px">Login</span>
                     </span>
-                </div>
-                <button type="submit" className="button-1" onClick={handleSubmit}></button>
+                </button>
         </div>
     )
 }
