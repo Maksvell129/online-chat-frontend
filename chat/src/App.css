@@ -88,23 +88,6 @@
     width: 100%;
 }
 
-.header-title {
-    letter-spacing: 0;
-    line-height: normal;
-    margin-top: 3px;
-    min-height: 20px;
-    text-align: center;
-    width: 100%;
-}
-
-.subheader {
-    letter-spacing: 0;
-    line-height: normal;
-    min-height: 15px;
-    text-align: center;
-    width: 100%;
-}
-
 .container-center-horizontal {
     display: flex;
     flex-direction: row;

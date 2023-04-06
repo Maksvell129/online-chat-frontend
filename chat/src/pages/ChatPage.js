@@ -1,5 +1,5 @@
 import React from 'react'
-import BarHeader from '../components/Common/BarHeader';
+import BarHeader from '../components/BarHeader/BarHeader';
 import '../components/Chat/Chat.css';
 import Chat from '../components/Chat/Chat';
 
