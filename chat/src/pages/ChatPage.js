@@ -1,8 +1,7 @@
 import React from 'react'
-import BarHeader from '../components/Login/BarHeader';
+import BarHeader from '../components/Common/BarHeader';
 import '../components/Chat/Chat.css';
 import Chat from '../components/Chat/Chat';
-import LoginForm from "../components/Login/LoginForm";
 
 const ChatPage = () => {
 
