@@ -1,3 +1,5 @@
+import './BarHeader.css'
+
 function BarHeader(props) {
     const {spanText, headerTitle} = props;
 

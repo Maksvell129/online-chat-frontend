@@ -1,0 +1,33 @@
+.ChatRight {
+    display: flex;
+    flex-direction: column;
+}
+
+.MyMessage {
+    background-color: var(--blue);
+    align-self: flex-end;
+    border-radius: 16px;
+    margin: 8px 20px 8px 0;
+    padding: 8px 16px;
+}
+
+
+.ForeignMessage {
+    background-color: var(--cararra);
+    align-self: flex-start;
+    border-radius: 16px;
+    margin: 8px 0 8px 20px;
+    padding: 8px 16px;
+}
+
+.UserName {
+    text-align: left;
+}
+
+.Text {
+
+}
+
+.SendTime {
+    text-align: right;
+}

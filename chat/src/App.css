@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/css?family=Abel:400);
+
+:root {
+    background-color: darkgrey;
+    --black: rgba(0,0,0,1);
+    --baltic-sea: rgba(44,44,46,1);
+    --boulder: rgba(122,122,122,1);
+    --gray: rgba(128,128,129,1);
+    --cararra: rgba(236,235,235,1);
+    --blue: rgba(183, 225, 244, 1);
+    --baby-powder: rgba(252,252,252,1);
+    --white: rgba(255,255,255,1);
+
+    --font-size-xs: 12px;
+    --font-size-m: 14px;
+    --font-size-s2: 16px;
+    --font-size-m2: 20px;
+    --font-size-xxs: 8px;
+
+    --font-family-abel: "Abel";
+}
+
+.abel-normal-black-8px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xxs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-boulder-12px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-boulder-14px {
+    color: var(--boulder);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-s2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-white-20px {
+    color: var(--white);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-14px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-baltic-sea-20px {
+    color: var(--baltic-sea);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+.container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.screen a {
+    display: contents;
+    text-decoration: none;
+}

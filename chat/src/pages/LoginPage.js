@@ -1,5 +1,5 @@
 import React from 'react'
-import BarHeader from '../components/Login/BarHeader';
+import BarHeader from '../components/BarHeader/BarHeader';
 import '../components/Login/Login.css';
 import LoginForm from '../components/Login/LoginForm';
 
