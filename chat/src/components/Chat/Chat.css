@@ -12,6 +12,7 @@
     display: flex;
     overflow: scroll;
     overflow-x: hidden;
+    flex-direction: column-reverse;
     flex-grow: 1;
     width: 656px;
     height: 798px;
