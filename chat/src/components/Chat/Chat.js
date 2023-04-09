@@ -45,7 +45,9 @@ function Chat() {
                     ref={message}
                     onKeyDown={handleKeyDown}
                 />
-                <button className="sendButton" onClick={handleSendMessage}>Send</button>
+                <button className="sendButton" onClick={handleSendMessage}>
+                    <img width={20} src="images/send.png" alt={'Send'}/>
+                </button>
             </div>
         </div>);
 }
