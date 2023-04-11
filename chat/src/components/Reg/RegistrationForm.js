@@ -51,6 +51,8 @@ const RegistrationForm = () => {
 
 
 */
+
+
     return (
         <div className="container-center-horizontal x2 screen">
             <div className="reg-form">
