@@ -16,27 +16,34 @@ const LoginForm = () => {
 
     }
     
-    console.log('render')
-    
     return (
         <div className="container-center-horizontal x3 screen">
-                
+            <form onSubmit={handleSubmit}>
                 <div className='login-form'>
                     <div className="username-group group abel-normal-baltic-sea-20px">
                         <span className="abel-normal-baltic-sea-20px">Login</span>
-                        <input type="text" className="input-1" ref={username} /> 
+                        <input 
+                            type="text" 
+                            className="input-1" 
+                            ref={username}
+                            required/> 
                     </div>
                     
 
                     <div className="password-group group abel-normal-baltic-sea-20px">
                         <span className="abel-normal-baltic-sea-20px">Password</span>
-                        <input type="password" className="input-2" ref={password} />
+                        <input 
+                            type="password" 
+                            className="input-2" 
+                            ref={password}
+                            required/>
                     </div>
                     
-                    <button type="submit" className="button-1 valign-text-middle" onClick={handleSubmit}>
+                    <button type="submit" className="button-1 valign-text-middle">
                         <span className="abel-normal-white-20px">Login</span>
                     </button>
                 </div>
+            </form>
         </div>
     )
 }
