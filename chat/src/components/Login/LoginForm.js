@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRef } from 'react';
 import "../Login/Login.css";
+import AuthService from '../../services/AuthService';
+import { decodeAccessToken } from '../../utils/token';
 
 const LoginForm = () => {
     const username = useRef() // ссылка на username 
@@ -11,9 +13,11 @@ const LoginForm = () => {
 
         const usernameValue = username.current.value
         const passwordValue = password.current.value
-
-        console.log(`Username: ${usernameValue}, Password: ${passwordValue}`);
-
+        
+        AuthService.login(usernameValue, passwordValue)
+        decodeAccessToken()
+        
+        // console.log(`Username: ${usernameValue}, Password: ${passwordValue}`);
     }
     
     return (
