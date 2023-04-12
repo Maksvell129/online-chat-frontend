@@ -1,7 +1,7 @@
 import React from 'react';
 import BarHeader from '../components/BarHeader/BarHeader';
-import '../components/Reg/Registration.css'
-import RegistrationForm from "../components/Reg/RegistrationForm";
+import '../components/Registration/Registration.css'
+import RegistrationForm from "../components/Registration/RegistrationForm";
 
 const RegistrationPage = () => {
 
