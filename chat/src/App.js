@@ -5,6 +5,7 @@ import ChatPage from "./pages/ChatPage";
 import LoginPage from "./pages/LoginPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import AuthProvider from "./contexts/auth/AuthProvider";
 import RegistrationPage from "./pages/RegistrationPage";
 
 export default function App() {
@@ -26,21 +27,23 @@ export default function App() {
     // }[readyState];
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path="/registration" element={<RegistrationPage/>}/>
-                <Route path="*" element={<LoginPage/>}/>
-                <Route
-                    path="/chat"
-                    element={
-                        // заглушка
-                        <ProtectedRoute isLoggedIn={true}>
-                            <ChatPage/>
-                        </ProtectedRoute>
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/registration" element={<RegistrationPage/>}/>
+                    <Route path="*" element={<LoginPage/>}/>
+                    <Route
+                        path="/chat"
+                        element={
+                            // заглушка
+                            <ProtectedRoute isLoggedIn={true}>
+                                <ChatPage/>
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
     )
 }
