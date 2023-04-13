@@ -1,9 +1,9 @@
 import axios from "axios"
-
+import { httpBaseURL } from "./constants"
 
 
 const api = axios.create({
-    baseURL: `http://localhost:8000/`
+    baseURL: httpBaseURL
 })
 
 
@@ -14,10 +14,15 @@ api.interceptors.response.use(function (response){
         data: response.data
     }
 }, function(error){
+    
+    if(!error.response){
+        alert('server is dead')
+    }
+
     return {
         correct: false,
-        status: error.response.status,
-        data: error.response.data
+        status: error.response?.status,
+        data: error.response?.data
     }
 })
 
