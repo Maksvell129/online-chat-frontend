@@ -1,25 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useRef } from 'react';
 import "../Login/Login.css";
 import AuthService from '../../services/AuthService';
-import { decodeAccessToken } from '../../utils/token';
+import AuthContext from '../../contexts/auth/AuthContext';
+import useRequest from '../../hooks/useRequest';
 
 const LoginForm = () => {
     const username = useRef() // ссылка на username 
     const password = useRef() // ссылка на пароль
+    
+    const {contextData} = useContext(AuthContext)
+    
+    const [isLoading, login] = useRequest(async (username, password) => {
+        const response = await AuthService.login(username, password)
 
-    const handleSubmit = (event) => {       //обработка нажатия кнопки регистрации
+        if(!response.correct){
+            if(response.status === 400)
+                alert(`username: ${response.data.username} password: ${response.data.password}`)
+            else {
+                alert(response.data.detail)
+            }
+            return
+        }
+
+        contextData.setIsAuth(response.correct)
+    })
+
+    const handleSubmit = async (event) => {       //обработка нажатия кнопки регистрации
         event.preventDefault();
 
         const usernameValue = username.current.value
         const passwordValue = password.current.value
-        
-        AuthService.login(usernameValue, passwordValue)
-        decodeAccessToken()
-        
-        // console.log(`Username: ${usernameValue}, Password: ${passwordValue}`);
+
+        await login(usernameValue, passwordValue)
     }
     
+
+    if(isLoading)
+        return
+
     return (
         <div className="container-center-horizontal x3 screen">
             <form onSubmit={handleSubmit}>
