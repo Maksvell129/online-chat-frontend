@@ -4,6 +4,7 @@ import "../Login/Login.css";
 import AuthService from '../../services/AuthService';
 import AuthContext from '../../contexts/auth/AuthContext';
 import useRequest from '../../hooks/useRequest';
+import { getUserInformationFromAccessToken } from '../../utils/user';
 
 const LoginForm = () => {
     const username = useRef() // ссылка на username 
@@ -23,7 +24,11 @@ const LoginForm = () => {
             return
         }
 
+        const userData = getUserInformationFromAccessToken()
+
         contextData.setIsAuth(response.correct)
+        contextData.setUsername(userData.username)
+        contextData.setUserId(userData.userId)
     })
 
     const handleSubmit = async (event) => {       //обработка нажатия кнопки регистрации
