@@ -5,7 +5,7 @@ export const sendPrivateRequest = async (request) => {
     
     const response = await request();
     if(!response.correct){
-        if (response.status === 401 || response.status === 422){
+        if (response.status === 401 || response.status === 422 || response.status === 400){
 
             const refreshToken = getRefreshToken()
             const isCorrect = await AuthService.refresh(refreshToken);
