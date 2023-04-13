@@ -8,7 +8,7 @@ function getUserInformationFromAccessToken(){
         return null
 
     return {
-        user_id: data.user_id,
+        userId: data.user_id,
         username: data.username
     }
 
