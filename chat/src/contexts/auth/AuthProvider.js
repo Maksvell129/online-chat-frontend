@@ -4,6 +4,7 @@ import { getUserInformationFromAccessToken } from '../../utils/user'
 import AuthService from '../../services/AuthService'
 import { getAccessToken } from '../../utils/token'
 import useRequest from '../../hooks/useRequest'
+import { sendPrivateRequest } from '../../utils/request'
 
 const AuthProvider = ({children}) => {
 
@@ -22,11 +23,12 @@ const AuthProvider = ({children}) => {
     }
 
     const [isLoading, checkLogin] = useRequest(async () =>{
-        const token = getAccessToken()
 
         
-        const response = await AuthService.verify(token)
-
+        const response = await sendPrivateRequest(
+           async () => AuthService.verifyAccessToken()
+        )
+        
         if(response.correct){
             const userData = getUserInformationFromAccessToken()
             setUsername(userData.username)
