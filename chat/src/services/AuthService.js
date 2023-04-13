@@ -1,5 +1,5 @@
 import API from "../configuration/api"
-import { setAccessToken, setRefreshToken } from "../utils/token"
+import { getAccessToken, setAccessToken, setRefreshToken } from "../utils/token"
 import { accessTokenName, refreshTokenName } from "../configuration/constants"
 
 export default class AuthService {
@@ -23,8 +23,8 @@ export default class AuthService {
     }
 
     static async refresh(refreshToken){
-        const answer = await API.post('/accounts/api/token/', {
-            refreshTokenName: refreshToken            
+        const answer = await API.post('/accounts/api/token/refresh/', {
+            refresh: refreshToken            
         })
 
         if(answer.correct)
@@ -40,6 +40,11 @@ export default class AuthService {
     static async verify(token){
         const answer = await API.post('/accounts/api/verify/', {token})
         return answer
+    }
+
+    static async verifyAccessToken(){
+        const accessToken = getAccessToken()
+        return await this.verify(accessToken)
     }
 
 }
