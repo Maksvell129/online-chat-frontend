@@ -5,6 +5,7 @@ import "../Chat/Chat.css";
 import { baseURL } from "../../configuration/constants";
 import { getAccessToken } from "../../utils/token";
 import AuthContext from "../../contexts/auth/AuthContext";
+import Moment from "moment"
 
 function Chat() {
     const message = useRef();
@@ -35,33 +36,40 @@ function Chat() {
                 const data = message.message
                 
                 
-                const createdAt = new Date(data.created_at);
+                const createdAt = Moment(data.created_at);
+                const createdAtTime = createdAt.format('HH:mm')
+
+                console.log(createdAt)
+
                 const authorId = data.author
                 setMessages([...messages,
                     {
                         author: data.author_username,
                         text: data.content,
-                        time: `${createdAt.getHours()}:${createdAt.getMinutes()}`,
+                        time: createdAtTime,
                         isOwnMessage: authorId === contextData.userId
                     }]
                 )
-
+                break;
             }
 
             case 'message_history':{
                 const messageHistory = message.messages
 
                 const newMessages = messageHistory.map((message, index) => {
-                    const createdAt = new Date(message.created_at)
+                    const createdAt = Moment(message.created_at);
+                    const createdAtTime = createdAt.format('HH:mm')
+
                     return {
                         author: message.author_username,
                         text: message.content,
-                        time: `${createdAt.getHours()}:${createdAt.getMinutes()}`,
+                        time: createdAtTime,
                         isOwnMessage: message.author === contextData.userId
                     }
                 })
 
                 setMessages([...messages, ...newMessages])
+                break;
             }
         
         }
