@@ -1,9 +1,10 @@
 .modalContainer {
     position: absolute;
-    width: 13%;
-    height: 40%;
+    width: 300px;
+    height: 400px;
     background-color: rgba(128,128,129,0.8);
     top: 80px;
+
 }
 
 .close-users-btn {
