@@ -8,6 +8,7 @@
     min-height: 56px;
     padding: 8px 0;
     width: 100%;
+    justify-content: space-between;
 }
 
 .header-title {
@@ -25,4 +26,36 @@
     min-height: 15px;
     text-align: center;
     width: 100%;
+}
+
+.return-btn {
+    position: relative;
+    left: -295px;
+    top: -30px;
+}
+
+.return-btn-style {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.users-btn {
+    position: relative;
+    right: -295px;
+    top: -50px;
+}
+
+.users-btn-style {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }

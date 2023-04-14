@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Abel:400);
 
+body {
+    margin: 0;
+}
+
 :root {
     background-color: darkgrey;
     --black: rgba(0,0,0,1);
@@ -14,6 +18,7 @@
     --font-size-xs: 12px;
     --font-size-m: 14px;
     --font-size-s2: 16px;
+    --font-size-s3: 18px;
     --font-size-m2: 20px;
     --font-size-xxs: 8px;
 
@@ -48,7 +53,15 @@
     color: var(--black);
     font-family: var(--font-family-abel);
     font-size: var(--font-size-s2);
-    font-weight: bold;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-black-18px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-s3);
+    font-weight: 600;
     font-style: normal;
 }
 

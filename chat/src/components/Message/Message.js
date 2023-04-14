@@ -10,7 +10,7 @@ function Message({ username, text, time, isOwnMessage }) {
                     isOwnMessage ? "MyMessage" : "ForeignMessage" 
                 }
             >
-                <div className="abel-normal-black-16px UserName">
+                <div className="abel-normal-black-18px UserName">
                     {username}
                 </div>
                 
