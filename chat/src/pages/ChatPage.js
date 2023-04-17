@@ -9,11 +9,11 @@ const ChatPage = () => {
 
     return (
      <div className="container-center-horizontal">
-         <div className="x4 screen">
+         <div className="x4 screen chat-content">
              <BarHeader spanText="Chat" headerTitle="Chat" handleUsersClick={() => setIsInfoOpened(true)}/>
+             {isInfoOpened && <UsersList onClose={() => setIsInfoOpened(false)} />}
              <Chat/>
          </div>
-         {isInfoOpened && <UsersList onClose={() => setIsInfoOpened(false)} />}
      </div>
     )
 }
