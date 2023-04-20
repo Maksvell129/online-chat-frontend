@@ -1,4 +1,5 @@
 import React from "react";
+import './MessageInput.css'
 
 const CustomInput = ({ messageRef, onKeyDown, onSubmit }) => (
     <div className="composer overlap-group1">
