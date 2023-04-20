@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react'
 import BarHeader from '../components/BarHeader/BarHeader';
 import MessagesList from '../components/MessagesList/MessagesList';
 import UsersList from "../components/Users/UsersList";
-import CustomInput from '../components/MessageInput/MessageInput';
+import MessageInput from '../components/MessageInput/MessageInput';
 import '../components/MessagesList/MessagesList.css'
 
 const ChatPage = () => {
@@ -34,7 +34,7 @@ const ChatPage = () => {
              <BarHeader spanText="Chat" headerTitle="Chat" handleUsersClick={() => setIsInfoOpened(true)}/>
              {isInfoOpened && <UsersList onClose={() => setIsInfoOpened(false)} />}
              <MessagesList messages={messages}/>
-             <CustomInput
+             <MessageInput
                 onSubmit={handleSendMessage}
                 onKeyDown={handleKeyDown}
                 messageRef={message}

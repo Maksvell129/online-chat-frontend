@@ -1,7 +1,7 @@
 import React from "react";
 import './MessageInput.css'
 
-const CustomInput = ({ messageRef, onKeyDown, onSubmit }) => (
+const MessageInput = ({ messageRef, onKeyDown, onSubmit }) => (
     <div className="composer overlap-group1">
         <input
             className="overlap-group2 send-a-message abel-normal-boulder-14px"
@@ -15,4 +15,4 @@ const CustomInput = ({ messageRef, onKeyDown, onSubmit }) => (
     </div>
 );
 
-export default CustomInput;
+export default MessageInput;
