@@ -1,4 +1,4 @@
-.modalBg {
+.optionsBg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -6,21 +6,21 @@
     justify-content: center;
 }
 
-.modalContainer {
-    max-width: 35%;
-    width: 35%;
+.optionsContainer {
+    max-width: 20%;
+    width: 20%;
     height: 50%;
     background-color: rgba(128,128,129,0.8);
     margin-top: 80px;
     word-break: break-word;
 }
 
-.close-users-btn {
+.close-options-btn {
     position: relative;
     margin-left: 2%;
 }
 
-.close-users-bnt-style {
+.close-options-bnt-style {
     background: none;
     color: inherit;
     border: none;
@@ -28,9 +28,4 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-}
-
-.users {
-    margin-left: 5%;
-    margin-top: 3%;
 }
