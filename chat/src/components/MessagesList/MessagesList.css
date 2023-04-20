@@ -11,7 +11,7 @@
 .messages-list-container {
     align-items: flex-end;
     display: flex;
-    overflow: scroll;
+    overflow-y: scroll;
     flex-direction: column-reverse;
     width: 100%;
     flex-grow: 1;
