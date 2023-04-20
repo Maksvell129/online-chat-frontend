@@ -92,8 +92,9 @@ body {
 
 .container-center-horizontal {
     pointer-events: none;
-    width: 100%;
-    height: 100vh   ;
+    height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .container-center-horizontal > * {
