@@ -22,6 +22,10 @@
     display: none;
 }
 
+.message-style {
+    width: 40%;
+}
+
 .composer {
     align-items: center;
     background-color: var(--white);

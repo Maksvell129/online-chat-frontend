@@ -33,9 +33,11 @@ function Chat() {
     return (
         <div className="x4 screen">
             <div className="chat-container-ChatPage">
-                {messages.map((message, index, date) => (
-                    <Message key={index} username='test' text={message} time='12:22' isOwnMessage={true}/>
-                ))}
+                <ul className="message-style">
+                    {messages.map((message, index, date) => (
+                        <Message key={index} username='test' text={message} time='12:22' isOwnMessage={true}/>
+                    ))}
+                </ul>
             </div>
             <CustomInput
                 onSubmit={handleSendMessage}
