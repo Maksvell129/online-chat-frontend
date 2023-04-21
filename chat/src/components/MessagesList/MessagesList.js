@@ -4,11 +4,6 @@ import "./MessagesList.css";
 
 function MessagesList({messages}) {
 
-    // const {sendMessage} = useWebSocket("ws://localhost:8080");
-    // const handleNewMessage = (event) => {
-    // setMessages([...messages, event.data]);
-    // };
-
     return (
         <div className="messages-list-container">
             <ul className="message-style">

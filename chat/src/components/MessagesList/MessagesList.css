@@ -21,8 +21,15 @@
     display: none;
 }
 
+.messages-list-container > ul {
+    display: flex;
+    flex-direction: column;
+}
+
 .message-style {
-    width: 40%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .chat-content {
