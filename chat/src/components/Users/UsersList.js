@@ -8,16 +8,55 @@ const UsersList = ({onClose}) => (
                     <img width={10} src="images/close.png"/>
                 </button>
             </div>
-            <div className="abel-normal-black-16px">
-                <dl className="users">
-                    <dd>Bebra</dd>
-                    <dd>Bebra</dd>
-                    <dd>Bebra</dd>
-                    <dd>Bebra</dd>
-                    <dd>Bebra</dd>
-                    <dd>Bebra</dd>
-                </dl>
-            </div>
+            <dl className="users abel-normal-black-16px">
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+                <dd>Bebra</dd>
+            </dl>
         </div>
     </div>
 );
