@@ -10,15 +10,11 @@ function MessagesList({messages}) {
     // };
 
     return (
-        // <div className="x4 screen">
-            <div className="messages-list-container">
-                <ul className="message-style">
-                    {messages.map((message, index, date) => (
-                        <Message key={index} username='test' text={message} time='12:22' isOwnMessage={true}/>
-                    ))}
-                </ul>
-            </div>
-        // </div>
+        <div className="messages-list-container">
+            <ul className="message-style">
+                 {messages.map((message, index) => (<Message key={index} username={message.author} text={message.text} time={message.time} isOwnMessage={message.isOwnMessage}/>))}
+            </ul>
+        </div>
     );
 }
 
