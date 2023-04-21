@@ -1,0 +1,34 @@
+.x4 {
+    align-items: flex-start;
+    background-color: var(--baby-powder);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.messages-list-container {
+    align-items: flex-end;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.messages-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+.message-style {
+    width: 40%;
+}
+
+.chat-content {
+    height: 100%;
+}
+
+.input-design {
+    width: 100%;
+}

@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Abel:400);
 
+body {
+    margin: 0;
+    height: 100vh;
+}
+
 :root {
     background-color: darkgrey;
     --black: rgba(0,0,0,1);
@@ -14,6 +19,7 @@
     --font-size-xs: 12px;
     --font-size-m: 14px;
     --font-size-s2: 16px;
+    --font-size-s3: 18px;
     --font-size-m2: 20px;
     --font-size-xxs: 8px;
 
@@ -52,6 +58,14 @@
     font-style: normal;
 }
 
+.abel-normal-black-18px {
+    color: var(--black);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-s3);
+    font-weight: 600;
+    font-style: normal;
+}
+
 .abel-normal-white-20px {
     color: var(--white);
     font-family: var(--font-family-abel);
@@ -77,11 +91,10 @@
 }
 
 .container-center-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     pointer-events: none;
-    width: 100%;
+    height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .container-center-horizontal > * {
@@ -92,4 +105,8 @@
 .screen a {
     display: contents;
     text-decoration: none;
+}
+
+.screen {
+    width: 100%;
 }

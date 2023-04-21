@@ -12,10 +12,8 @@
     border: 1px none;
     display: flex;
     flex-direction: column;
+    height: 100%;
     /* position: relative; */
-
-    min-width: 656px;   
-    min-height: 960px;
 
 }
 
