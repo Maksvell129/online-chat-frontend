@@ -9,11 +9,14 @@
 
 .modalContainer {
     max-width: 600px;
+    min-width: var(--min-width);
+    min-height: 100px;
     width: 35%;
     height: 50%;
+
     background-color: rgba(128,128,129,0.8);
-    margin-top: 80px;
     word-break: break-word;
+    margin: auto 0;
 
     display: flex;
     flex-direction: column;
