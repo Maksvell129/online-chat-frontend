@@ -24,6 +24,9 @@ body {
     --font-size-xxs: 8px;
 
     --font-family-abel: "Abel";
+
+    --min-width: 150px;
+    --min-height: 220px;
 }
 
 .abel-normal-black-8px {
@@ -91,13 +94,19 @@ body {
 }
 
 .container-center-horizontal {
+    position: relative;
     pointer-events: none;
-    height: 100vh;
+    
     max-width: 1000px;
+    min-width: var(--min-width);
+    height: 100vh;
+
     margin: 0 auto;
 }
 
+
 .container-center-horizontal > * {
+    position: relative;
     flex-shrink: 0;
     pointer-events: auto;
 }

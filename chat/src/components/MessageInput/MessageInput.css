@@ -29,7 +29,7 @@
 .send-a-message {
     letter-spacing: 0px;
     line-height: normal;
-    min-height: 18px;
+    height: 18px;
     width: 100%;
 }
 
