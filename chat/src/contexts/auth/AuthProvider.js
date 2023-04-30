@@ -13,7 +13,7 @@ const AuthProvider = ({children}) => {
     const [username, setUsername] = useState("")
 
 
-    const contextData = {
+    const authContextData = {
         isAuth,
         setIsAuth,
         userId,
@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
 
 
     return (
-      <AuthContext.Provider value={{contextData}}>
+      <AuthContext.Provider value={{authContextData}}>
           {children}
       </AuthContext.Provider>
     )
