@@ -26,22 +26,9 @@
     min-height: 20px;
 }
 
-.send-a-message {
+.message-input {
     letter-spacing: 0px;
     line-height: normal;
     height: 18px;
     width: 100%;
-}
-
-.sendButton {
-    align-items: center;
-    display: flex;
-    padding: 5px 10px;
-    margin: 12px;
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
 }
