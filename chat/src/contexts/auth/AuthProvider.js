@@ -5,13 +5,13 @@ import AuthService from '../../services/AuthService'
 import { getAccessToken } from '../../utils/token'
 import useRequest from '../../hooks/useRequest'
 import { sendPrivateRequest } from '../../utils/request'
+import useComponentWillMount from '../../hooks/useComponentWillMount'
 
 const AuthProvider = ({children}) => {
 
     const [isAuth, setIsAuth] = useState(false)
     const [userId, setUserId] = useState()
     const [username, setUsername] = useState("")
-
 
     const authContextData = {
         isAuth,
@@ -39,9 +39,9 @@ const AuthProvider = ({children}) => {
     })
 
 
-    useEffect(() => {
+    useComponentWillMount(() => {
         checkLogin()
-    }, [])
+    })
 
 
     if(isLoading)
