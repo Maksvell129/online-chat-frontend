@@ -1,23 +1,26 @@
 .optionsBg {
     position: absolute;
+    left: 0;
+    top: 0; 
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .optionsContainer {
-    max-width: 20%;
-    width: 20%;
-    height: 50%;
+    max-width: 300px;
+    min-width: var(--min-width);
+    width: 35%;
+
     background-color: rgba(128,128,129,0.8);
-    margin-top: 80px;
     word-break: break-word;
 }
 
 .close-options-btn {
+    margin: 2px;
     position: relative;
-    margin-left: 2%;
 }
 
 .close-options-bnt-style {
@@ -28,4 +31,11 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
+}
+
+.options-btns{
+    margin: 0 2px 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
