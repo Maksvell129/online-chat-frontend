@@ -28,6 +28,20 @@
 
 }
 
+.message-additional-info{
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+}
+
+.Modified{
+    margin-top: 5px;
+    /* display: flex; */
+    /* align-items: flex-end; */
+}
 .SendTime {
-    text-align: right;
+    grid-column: 3;
+    margin-top: auto;
+    /* display: flex; */
+    /* align-items: flex-end; */
 }
