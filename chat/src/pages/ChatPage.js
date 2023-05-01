@@ -14,10 +14,10 @@ import Moment from "moment/moment";
 const ChatPage = () => {
     const [isInfoOpened, setIsInfoOpened] = useState(false);
     
-    const [currentMessage, setCurrentMessage] = useState("")
+    const [currentMessageText, setCurrentMessageText] = useState("")
 
-    const [currentEditingMessage, setCurrentEditingMessage] = useState("")
-    const [currentEditingMessageId, setCurrentEditingMessageId] = useState()
+    const [currentEditingMessage, setCurrentEditingMessage] = useState()
+
     const [isEditing, setIsEditing] = useState(false)
 
     const [messages, setMessages] = useState([]);
@@ -58,6 +58,7 @@ const ChatPage = () => {
                         author: data.author_username,
                         text: data.content,
                         time: createdAtTime,
+                        isModified: data.is_modified,
                         isOwnMessage: authorId === authContextData.userId
                     }]
                 )
@@ -75,6 +76,7 @@ const ChatPage = () => {
                         author: message.author_username,
                         text: message.content,
                         time: createdAtTime,
+                        isModified: message.is_modified,
                         isOwnMessage: message.author === authContextData.userId
                     }
                 })
@@ -91,56 +93,60 @@ const ChatPage = () => {
       }
     });
 
-    const messageChanged = (event) => {
+    const currentMessageTextChanged = (event) => {
         event.preventDefault()
-        setCurrentMessage(event.target.value)
+        setCurrentMessageText(event.target.value)
     }
 
-    const editingMessageChanged = (event) => {
+    const editingCurrentMessageTextChanged = (event) => {
         event.preventDefault()
-        setCurrentEditingMessage(event.target.value)
+        setCurrentEditingMessage((prevMessage) => {
+            return {...prevMessage, text: event.target.value}
+        })
     }
 
 
     const handleSendMessage = () => {
-        if (currentMessage) {
-            sendMessage(currentMessage);
-            setCurrentMessage("")
-        }
+        if (currentMessageText) {
+            sendMessage(currentMessageText);
+            setCurrentMessageText("")
+        
+}
     };
 
     const handleMessageStartEdit = (id) => {
         setIsEditing(true)
         const message = messages.find((message) => message.id === id)
-        setCurrentEditingMessage(message.text)
-        setCurrentEditingMessageId(message.id)
+        setCurrentEditingMessage(message)
     }
 
     const handleUpdateMessage = () => {
-        if(currentEditingMessageId && currentEditingMessage){
-            const initialMessage = messages.find((message) => message.id === currentEditingMessageId).text
-            if(initialMessage !== currentEditingMessage){
+        if(currentEditingMessage){
+            const initialMessage = messages.find((message) => message.id === currentEditingMessage.id).text
+            if(initialMessage !== currentEditingMessage.text){
+                const newMessage = {...currentEditingMessage, isModified: true}
+
                 setMessages((prevMessages) =>
                     prevMessages.map((message) => 
-                        message.id === currentEditingMessageId ? { ...message, text: currentEditingMessage } : message
+                        message.id === newMessage.id ? newMessage : message
                     )
                 )
+                //SEND ON BACKEND
 
-                setCurrentEditingMessageId()
                 setIsEditing(false)
-                setCurrentEditingMessage("")
+                setCurrentEditingMessage()
             }
         }
     }
     
     const handleCancelEditingMessage = () => {
-        setCurrentEditingMessageId()
         setIsEditing(false)
-        setCurrentEditingMessage("")
+        setCurrentEditingMessage()
     }
 
     const handleDeleteMessage = (id) => {
         setMessages((prevMessages) => prevMessages.filter((message) => message.id !== id));
+        //SEND ON BACKEND
     }
 
     const handleMessageSendKeyDown = (event) => {
@@ -167,16 +173,16 @@ const ChatPage = () => {
                  handleMessageDelete={handleDeleteMessage}/>
              {!isEditing ? 
                 <MessageSend
-                    message={currentMessage}
+                    message={currentMessageText}
                     onKeyDown={handleMessageSendKeyDown}
-                    onMessageChanged={messageChanged}
+                    onMessageChanged={currentMessageTextChanged}
                     onSendMessage={handleSendMessage}
                 />
                 :
                 <MessageUpdate
-                    message={currentEditingMessage}
+                    message={currentEditingMessage.text}
                     onKeyDown={handleMessageUpdateKeyDown}
-                    onMessageChanged={editingMessageChanged}
+                    onMessageChanged={editingCurrentMessageTextChanged}
                     onSave={handleUpdateMessage}
                     onCancel={handleCancelEditingMessage}
                 />
