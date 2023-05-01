@@ -22,7 +22,7 @@ function Message({username, text, time, isModified, isOwnMessage, onStartEdit, o
             <div className="message-additional-info">
                 {isModified && 
                 <div className="abel-normal-gray-12px Modified">
-                    modified
+                    edited
                 </div>
                 }
                 
