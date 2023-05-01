@@ -1,6 +1,7 @@
 import "../MessageOptions/MessageOptions.css";
 
-const MessageOptions = ({onClose}) => (
+const MessageOptions = ({onClose, onMessageStartEdit, onMessageDelete}) => (
+    
     <div className={'optionsBg'}>
         <div className={'optionsContainer'}>
             <div className="close-options-btn">
@@ -8,9 +9,9 @@ const MessageOptions = ({onClose}) => (
                     <img width={10} src="images/close.png"/>
                 </button>
             </div>
-            <div>
-                <span>dadasd</span>
-                <span>dadasd</span>
+            <div className="options-btns">
+                <button onClick={onMessageStartEdit}>Edit</button>
+                <button onClick={onMessageDelete}>Delete</button>
             </div>
         </div>
     </div>

@@ -1,18 +1,16 @@
-import React from "react";
+import React from 'react'
 import './MessageInput.css'
 
-const MessageInput = ({ messageRef, onKeyDown, onSubmit }) => (
-    <div className="composer overlap-group1">
-        <input
-            className="overlap-group2 send-a-message abel-normal-boulder-14px"
+const MessageInput = ({message, onMessageChanged, onKeyDown}) => {
+  return (
+    <input
+            className="overlap-group2 message-input abel-normal-boulder-14px"
             type="text"
-            ref={messageRef}
+            value={message}
+            onChange={onMessageChanged}
             onKeyDown={onKeyDown}
         />
-        <button className="sendButton" onClick={onSubmit}>
-            <img width={20} src="images/send.png" alt={'Send'}/>
-        </button>
-    </div>
-);
+  )
+}
 
-export default MessageInput;
+export default MessageInput

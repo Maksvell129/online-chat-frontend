@@ -37,6 +37,14 @@ body {
     font-style: normal;
 }
 
+.abel-normal-gray-12px {
+    color: var(--gray);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
 .abel-normal-boulder-12px {
     color: var(--boulder);
     font-family: var(--font-family-abel);

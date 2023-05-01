@@ -5,11 +5,11 @@ import { privateRoutes, publicRoutes } from './routes';
 
 const AppRouter = () => {
 
-    const {contextData} = useContext(AuthContext)
+    const {authContextData} = useContext(AuthContext)
 
     return (
         <BrowserRouter>{
-            contextData.isAuth
+            authContextData.isAuth
                 ?
                 <Routes>
                     {privateRoutes.map(route => 
