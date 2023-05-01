@@ -10,7 +10,7 @@ const LoginForm = () => {
     const username = useRef() // ссылка на username 
     const password = useRef() // ссылка на пароль
     
-    const {contextData} = useContext(AuthContext)
+    const {authContextData} = useContext(AuthContext)
     
     const [isLoading, login] = useRequest(async (username, password) => {
         const response = await AuthService.login(username, password)
@@ -26,9 +26,9 @@ const LoginForm = () => {
 
         const userData = getUserInformationFromAccessToken()
 
-        contextData.setIsAuth(response.correct)
-        contextData.setUsername(userData.username)
-        contextData.setUserId(userData.userId)
+        authContextData.setIsAuth(response.correct)
+        authContextData.setUsername(userData.username)
+        authContextData.setUserId(userData.userId)
     })
 
     const handleSubmit = async (event) => {       //обработка нажатия кнопки регистрации
@@ -41,8 +41,6 @@ const LoginForm = () => {
     }
     
 
-    if(isLoading)
-        return
 
     return (
         <div className="container-center-horizontal x3 screen">
