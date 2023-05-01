@@ -9,7 +9,10 @@ import AuthContext from "../contexts/auth/AuthContext";
 import useWebSocket from "react-use-websocket";
 import {baseURL} from "../configuration/constants";
 import {getAccessToken} from "../utils/token";
+import MessageService from '../services/MessageService';
 import Moment from "moment/moment";
+import { sendPrivateRequest } from '../utils/request';
+import useRequest from '../hooks/useRequest';
 
 const ChatPage = () => {
     const [isInfoOpened, setIsInfoOpened] = useState(false);
@@ -23,16 +26,13 @@ const ChatPage = () => {
     const [messages, setMessages] = useState([]);
 
     const {authContextData} = useContext(AuthContext)
-
+    const accessToken = getAccessToken()
+    
+ 
 
     const {
         sendMessage,
-        sendJsonMessage,
-        lastMessage,
-        lastJsonMessage,
-        readyState,
-        getWebSocket,
-      } = useWebSocket(`ws://${baseURL}/ws/chat/?access_token=${getAccessToken()}`, {
+      } = useWebSocket(`ws://${baseURL}/ws/chat/?access_token=${accessToken}`, {
       onOpen: () => {
         console.log("Connected!");
       },
@@ -67,7 +67,7 @@ const ChatPage = () => {
 
             case 'message_history':{
                 const messageHistory = message.messages
-
+                
                 const newMessages = messageHistory.map((message, index) => {
                     const createdAt = Moment(message.created_at);
                     const createdAtTime = createdAt.format('HH:mm')
@@ -81,17 +81,48 @@ const ChatPage = () => {
                     }
                 })
 
-                setMessages([...messages, ...newMessages])
+                setMessages(newMessages)
                 break;
             }
+            
+            case 'message_updated':{
+                const data = message.message
+                if(authContextData.userId !== data.author){
+                    const updatedMessage = messages.find((message) => message.id === data.id)
+                    updatedMessage.text = data.content
+                    updatedMessage.isModified = data.is_modified
 
+                    setMessages((prevMessages) =>
+                        prevMessages.map((message) => 
+                            message.id === updatedMessage.id ? updatedMessage : message
+                        )
+                    )
+                }
+            }
         }
 
       },
       onClose: () => {
         console.log("Disconnected!");
-      }
+      },
+      onError: () => {
+        console.log('Error')
+      },
     });
+    
+    
+
+    const [updateLoading, sendUpdateMessageRequest] = useRequest(async (id, text) => {
+        await sendPrivateRequest(
+            async () => await MessageService.update(id, text)
+        )
+    })
+
+    const [deleteLoading, sendDeleteMessageRequest] = useRequest(async (id) => {
+        await sendPrivateRequest(
+            async () => await MessageService.delete(id)
+        )
+    })
 
     const currentMessageTextChanged = (event) => {
         event.preventDefault()
@@ -110,8 +141,7 @@ const ChatPage = () => {
         if (currentMessageText) {
             sendMessage(currentMessageText);
             setCurrentMessageText("")
-        
-}
+        }
     };
 
     const handleMessageStartEdit = (id) => {
@@ -131,10 +161,9 @@ const ChatPage = () => {
                         message.id === newMessage.id ? newMessage : message
                     )
                 )
-                //SEND ON BACKEND
-
                 setIsEditing(false)
                 setCurrentEditingMessage()
+                sendUpdateMessageRequest(newMessage.id, newMessage.text)                
             }
         }
     }
@@ -146,7 +175,7 @@ const ChatPage = () => {
 
     const handleDeleteMessage = (id) => {
         setMessages((prevMessages) => prevMessages.filter((message) => message.id !== id));
-        //SEND ON BACKEND
+        sendDeleteMessageRequest(id)
     }
 
     const handleMessageSendKeyDown = (event) => {
