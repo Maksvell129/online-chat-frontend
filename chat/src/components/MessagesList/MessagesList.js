@@ -14,6 +14,7 @@ function MessagesList({messages, handleMessageStartEdit, handleMessageDelete}) {
                             username={message.author} 
                             text={message.text} 
                             time={message.time} 
+                            isModified={message.isModified}
                             isOwnMessage={message.isOwnMessage}
                             onStartEdit={() => handleMessageStartEdit(message.id)}
                             onDelete={() => handleMessageDelete(message.id)}
