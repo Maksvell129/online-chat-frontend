@@ -98,6 +98,29 @@ const ChatPage = () => {
                         )
                     )
                 }
+                break;
+            }
+
+
+            case 'message_updated':{
+                const data = message.message
+                if(authContextData.userId !== data.author){
+                    const updatedMessage = messages.find((message) => message.id === data.id)
+                    updatedMessage.text = data.content
+                    updatedMessage.isModified = data.is_modified
+
+                    setMessages((prevMessages) =>
+                        prevMessages.map((message) => 
+                            message.id === updatedMessage.id ? updatedMessage : message
+                        )
+                    )
+                }
+                break;
+            }
+
+            case 'message_deleted':{
+                const deletedMessageId = message.message_id
+                setMessages((prevMessages) => prevMessages.filter((message) => message.id !== deletedMessageId || message.isOwnMessage));
             }
         }
 
