@@ -10,9 +10,8 @@
 .modalContainer {
     max-width: 600px;
     min-width: var(--min-width);
-    min-height: 100px;
+    max-height: 200px;
     width: 35%;
-    height: 50%;
 
     background-color: rgba(128,128,129,0.8);
     word-break: break-word;
@@ -43,8 +42,14 @@
     flex-direction: column;
     align-items: center;
     overflow: scroll;
+    margin: 15px;
+    text-align: center;
 }
 
 .users > *{
     margin-left: 0px;
+}
+
+.my-user{
+    color: var(--dark-green);
 }
