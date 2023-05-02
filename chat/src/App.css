@@ -8,6 +8,7 @@ body {
 :root {
     background-color: darkgrey;
     --black: rgba(0,0,0,1);
+    --red: rgba(255,0,0,1);
     --baltic-sea: rgba(44,44,46,1);
     --boulder: rgba(122,122,122,1);
     --gray: rgba(128,128,129,1);
@@ -27,6 +28,9 @@ body {
 
     --min-width: 150px;
     --min-height: 220px;
+
+    --min-credentials-input-width: 273px;
+    --max-credentials-input-width: 300px;
 }
 
 .abel-normal-black-8px {
@@ -41,6 +45,14 @@ body {
     color: var(--gray);
     font-family: var(--font-family-abel);
     font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.abel-normal-red-14px {
+    color: var(--red);
+    font-family: var(--font-family-abel);
+    font-size: var(--font-size-m);
     font-weight: 400;
     font-style: normal;
 }
@@ -115,7 +127,7 @@ body {
 
 .container-center-horizontal > * {
     position: relative;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     pointer-events: auto;
 }
 
