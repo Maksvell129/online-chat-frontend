@@ -1,5 +1,5 @@
 import { accessTokenName, refreshTokenName} from '../configuration/constants'
-import {setItem, getItem} from './localStorage'
+import {setItem, getItem, removeItem} from './localStorage'
 import jwt from 'jwt-decode'
 
 function getAccessToken(){
@@ -18,6 +18,15 @@ function setRefreshToken(value){
     return setItem(refreshTokenName, value)
 }
 
+function removeAccessToken(){
+    return removeItem(accessTokenName)
+}
+
+function removeRefreshToken(){
+    return removeItem(refreshTokenName)
+}
+
+
 function decodeAccessToken(){
     const accessToken = getAccessToken()
     
@@ -27,4 +36,4 @@ function decodeAccessToken(){
     return jwt(accessToken)
 }
 
-export {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken, decodeAccessToken}
+export {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken, removeAccessToken, removeRefreshToken, decodeAccessToken}
