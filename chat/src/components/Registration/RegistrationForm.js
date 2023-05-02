@@ -1,100 +1,141 @@
-import React from "react";
-import {useRef} from "react";
+import React, { useState, useRef, useContext } from "react";
 import useRequest from "../../hooks/useRequest";
 import "./Registration.css";
 import AuthService from "../../services/AuthService";
+import AuthContext from "../../contexts/auth/AuthContext";
+import { getUserInformationFromAccessToken } from "../../utils/user";
+import ErrorInput from "../ErrorInput/ErrorInput";
 
 const RegistrationForm = () => {
 
-    const username = useRef()
-    const email = useRef()
-    const password = useRef()
-    const confirmPassword = useRef()
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
+
+    const [usernameErrorText, setUsernameErrorText] = useState()
+    const [emailErrorText, setEmailErrorText] = useState()
+    const [passwordErrorText, setPasswordErrorText] = useState()
+    const [confirmPasswordErrorText, setConfirmPasswordErrorText] = useState()
+    
+
+    const {authContextData} = useContext(AuthContext)
 
     const [isLoading, register] = useRequest(async (username, password, email) => {
+
+        setUsernameErrorText()
+        setEmailErrorText()
+        setPasswordErrorText()
 
         const response = await AuthService.register(username, password, email)
 
         if(!response.correct){
             if(response.status === 400)
                 {
-                    alert(
-                        `username: ${response.data.username}
-                         password: ${response.data.password}
-                         email: ${response.data.email}
-                        `
-                    )
+                    if(response.data.username)
+                        setUsernameErrorText(response.data.username)
+
+                    if(response.data.email)
+                        setEmailErrorText(response.data.email)
+                    
+                    if(response.data.password)
+                        setPasswordErrorText(response.data.password)
+
+                    return
                 }
         }
+        const userData = getUserInformationFromAccessToken()
+
+        authContextData.setIsAuth(response.correct)
+        authContextData.setUsername(userData.username)
+        authContextData.setUserId(userData.userId)
 
     })
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-
-        const usernameValue = username.current.value
-        const emailValue = email.current.value
-        const passwordValue = password.current.value
-        const confirmPasswordValue = confirmPassword.current.value
+        setConfirmPasswordErrorText()
         
 
-        if(passwordValue !== confirmPasswordValue){
-            alert('passwords must match')
+        if(password !== confirmPassword){
+            setConfirmPasswordErrorText('Passwords must match')
             return
         }
 
-        await register(usernameValue, passwordValue, emailValue)
+        register(username, password, email)
 
     }
 
+    const usernameChanged = (event) => {
+        event.preventDefault()
+        setUsername(event.target.value)
+    }
+
+
+    const emailChanged = (event) => {
+        event.preventDefault()
+        setEmail(event.target.value)
+    }
+
+
+    const passwordChanged = (event) => {
+        event.preventDefault()
+        setPassword(event.target.value)
+    }
+
+
+    const confirmPasswordChanged = (event) => {
+        event.preventDefault()
+        setConfirmPassword(event.target.value)
+    }
+
+
     if(isLoading)
-        return
+        return 'Loading'
 
 
     return (
-        <div className="container-center-horizontal x2 screen">
-            <div className="reg-form">
-                <form onSubmit={handleSubmit}>
-                    <div className="reg-group">
-                        <input 
-                            type="text" 
-                            className="input name" 
-                            placeholder="Enter your username" 
-                            ref={username}
-                            required/>
-                    </div>
-                    
-                    <div className="reg-group">
-                        <input 
-                            type="email" 
-                            className="input email" 
-                            placeholder="Enter your email" 
-                            ref={email}
-                            required/>
-                    </div>
-                    
-                    <div className="reg-group">
-                        <input 
-                            type="password" 
-                            className="input password" 
-                            placeholder="Input a password" 
-                            ref={password}
-                            required/>
-                    </div>
+        <form className='reg-form' onSubmit={handleSubmit}>
+            <div className="reg-credentials">
+                <ErrorInput 
+                    type="text" 
+                    errorText={usernameErrorText}
+                    className="input name" 
+                    placeholder="Enter your username" 
+                    value={username}
+                    onChange={usernameChanged}
+                    required/>
+            
+                <ErrorInput 
+                    type="email" 
+                    errorText={emailErrorText}
+                    className="input email" 
+                    placeholder="Enter your email" 
+                    value={email}
+                    onChange={emailChanged}
+                    required/>
+            
+                <ErrorInput 
+                    type="password" 
+                    errorText={passwordErrorText}
+                    className="input password" 
+                    placeholder="Input a password"
+                    value={password} 
+                    onChange={passwordChanged}
+                    required/>
 
-                    <div className="reg-group">
-                        <input 
-                            type="password" 
-                            className="input password" 
-                            ref={confirmPassword}
-                            placeholder="Confirm a password" 
-                            required/>
-                    </div>
-                    
-                    <button className="button">Signup</button>
-                </form>
+                <ErrorInput 
+                    type="password" 
+                    errorText={confirmPasswordErrorText}
+                    className="input password" 
+                    value={confirmPassword}
+                    onChange={confirmPasswordChanged}
+                    placeholder="Confirm a password" 
+                    required/>
             </div>
-        </div>
+            <button className="reg-button">Signup</button>
+        </form>
     )
 }
 

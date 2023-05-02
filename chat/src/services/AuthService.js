@@ -19,6 +19,14 @@ export default class AuthService {
 
     static async register(username, password, email){
         const answer = await API.post('/accounts/api/register/', {username, password, email})
+        
+        if(answer.correct)
+        {
+            setAccessToken(answer.data[accessTokenName])
+            setRefreshToken(answer.data[refreshTokenName])
+            delete answer.data
+        }
+        
         return answer
     }
 

@@ -1,25 +1,40 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useRef } from 'react';
 import "../Login/Login.css";
 import AuthService from '../../services/AuthService';
 import AuthContext from '../../contexts/auth/AuthContext';
 import useRequest from '../../hooks/useRequest';
 import { getUserInformationFromAccessToken } from '../../utils/user';
+import ErrorInput from '../ErrorInput/ErrorInput';
+
 
 const LoginForm = () => {
-    const username = useRef() // ссылка на username 
-    const password = useRef() // ссылка на пароль
+    const [username, setUsername] = useState("") 
+    const [password, setPassword] = useState("")
     
+    const [usernameErrorText, setUsernameErrorText] = useState()
+    const [passwordErrorText, setPasswordErrorText] = useState()
+
+
     const {authContextData} = useContext(AuthContext)
     
     const [isLoading, login] = useRequest(async (username, password) => {
+        setUsernameErrorText()
+        setPasswordErrorText()
+        
         const response = await AuthService.login(username, password)
-
+        
+        
         if(!response.correct){
             if(response.status === 400)
-                alert(`username: ${response.data.username} password: ${response.data.password}`)
+            {
+                if(response.data.username)
+                    setUsernameErrorText(response.data.username)
+                if(response.data.password)
+                    setPasswordErrorText(response.data.password)
+            }
             else {
-                alert(response.data.detail)
+                setUsernameErrorText(response.data.detail)
             }
             return
         }
@@ -31,46 +46,51 @@ const LoginForm = () => {
         authContextData.setUserId(userData.userId)
     })
 
-    const handleSubmit = async (event) => {       //обработка нажатия кнопки регистрации
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const usernameValue = username.current.value
-        const passwordValue = password.current.value
-
-        await login(usernameValue, passwordValue)
+        await login(username, password)
     }
     
+    const usernameChanged = (event) => {
+        event.preventDefault()
+        setUsername(event.target.value)
+    }
+
+    const passwordChanged = (event) => {
+        event.preventDefault()
+        setPassword(event.target.value)
+    }
 
 
     return (
-        <div className="container-center-horizontal x3 screen">
-            <form onSubmit={handleSubmit}>
-                <div className='login-form'>
-                    <div className="username-group group abel-normal-baltic-sea-20px">
-                        <span className="abel-normal-baltic-sea-20px">Login</span>
-                        <input 
-                            type="text" 
-                            className="input-1" 
-                            ref={username}
-                            required/> 
-                    </div>
-                    
-
-                    <div className="password-group group abel-normal-baltic-sea-20px">
-                        <span className="abel-normal-baltic-sea-20px">Password</span>
-                        <input 
-                            type="password" 
-                            className="input-2" 
-                            ref={password}
-                            required/>
-                    </div>
-                    
-                    <button type="submit" className="button-1 valign-text-middle">
-                        <span className="abel-normal-white-20px">Login</span>
-                    </button>
+        <form className='login-form' onSubmit={handleSubmit}>
+            <div className="credentials-group">
+                <div className="username-group abel-normal-baltic-sea-20px">
+                    <ErrorInput 
+                        type="text"
+                        errorText={usernameErrorText}
+                        className="username-input"
+                        placeholder="Enter your username"
+                        value={username}
+                        onChange={usernameChanged}
+                        required/> 
                 </div>
-            </form>
-        </div>
+                <div className="password-group abel-normal-baltic-sea-20px">
+                    <ErrorInput 
+                        type="password"
+                        errorText={passwordErrorText}
+                        className="password-input"
+                        placeholder="Enter your password"
+                        value={password} 
+                        onChange={passwordChanged}
+                        required/>
+                </div>
+            </div>
+            <button type="submit" className="login-button valign-text-middle">
+                <span className="abel-normal-white-20px">Login</span>
+            </button>
+        </form>
     )
 }
 
