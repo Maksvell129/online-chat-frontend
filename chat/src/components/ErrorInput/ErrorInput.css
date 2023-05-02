@@ -1,0 +1,7 @@
+.error-text{
+    margin: 0;
+    margin-left: 5px;
+    max-width: var(--min-credentials-input-width);
+    word-wrap: break-word;
+    overflow: hidden;
+}
