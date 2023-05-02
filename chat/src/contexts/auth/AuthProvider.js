@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import AuthContext from './AuthContext'
 import { getUserInformationFromAccessToken } from '../../utils/user'
 import AuthService from '../../services/AuthService'
-import { getAccessToken } from '../../utils/token'
 import useRequest from '../../hooks/useRequest'
 import { sendPrivateRequest } from '../../utils/request'
 import useComponentWillMount from '../../hooks/useComponentWillMount'
@@ -11,7 +10,7 @@ const AuthProvider = ({children}) => {
 
     const [isAuth, setIsAuth] = useState(false)
     const [userId, setUserId] = useState()
-    const [username, setUsername] = useState("")
+    const [username, setUsername] = useState()
 
     const authContextData = {
         isAuth,
