@@ -16,7 +16,8 @@ import useRequest from '../hooks/useRequest';
 
 const ChatPage = () => {
     const [isInfoOpened, setIsInfoOpened] = useState(false);
-    
+    const [usersOnline, setUsersOnline] = useState([])
+
     const [currentMessageText, setCurrentMessageText] = useState("")
 
     const [currentEditingMessage, setCurrentEditingMessage] = useState()
@@ -121,6 +122,22 @@ const ChatPage = () => {
             case 'message_deleted':{
                 const deletedMessageId = message.message_id
                 setMessages((prevMessages) => prevMessages.filter((message) => message.id !== deletedMessageId || message.isOwnMessage));
+                break;
+            }
+
+            case 'online_info':{
+                setUsersOnline(message.users_online)
+                break;
+            }
+
+            case 'user_join':{
+                setUsersOnline((prevUsers) => [...prevUsers, message.username])
+                break;
+            }
+
+            case 'user_leave':{
+                setUsersOnline((prevUsers) => [prevUsers.filter((user) => user !== message.username)])
+                break;
             }
         }
 
@@ -218,7 +235,7 @@ const ChatPage = () => {
      <div className="container-center-horizontal">
          <div className="x4 screen">
              <BarHeader spanText="Chat" headerTitle="Chat" handleUsersClick={() => setIsInfoOpened(true)}/>
-             {isInfoOpened && <UsersList onClose={() => setIsInfoOpened(false)} />}
+             {isInfoOpened && <UsersList users={usersOnline} onClose={() => setIsInfoOpened(false)} />}
              <MessagesList 
                  messages={messages}
                  handleMessageStartEdit={handleMessageStartEdit}
