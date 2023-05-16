@@ -1,0 +1,92 @@
+.x3 {
+    align-items: flex-start;
+    background-color: var(--baby-powder);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.login-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    overflow: hidden;
+
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.overlap-group {
+    /* height: 848px; */
+    /* position: relative; */
+    min-width: 656px;
+}
+
+.username-input {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 32px;
+    min-width: var(--min-credentials-input-width);
+    max-width: var(--max-credentials-input-width);
+}
+
+
+.password-input {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 32px;
+    min-width: var(--min-credentials-input-width);
+    max-width: var(--max-credentials-input-width);
+}
+
+.name {
+    letter-spacing: 0;
+    line-height: 22px;
+    white-space: nowrap;
+}
+
+.login-button {
+    background-color: #899199;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.credentials-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.credentials-group > * {
+    margin-bottom: 20px;
+}
+.username-group {
+    letter-spacing: 0;
+    line-height: 22px;
+    user-select: contain;
+    white-space: nowrap;
+}
+
+.password-group {
+    letter-spacing: 0;
+    line-height: 22px;
+    white-space: nowrap;
+}
+
+
+.registration-offer{
+    text-align: center;
+    margin-top: 10px;
+}

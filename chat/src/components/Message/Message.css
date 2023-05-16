@@ -1,0 +1,47 @@
+.MyMessage {
+    background-color: var(--blue);
+    align-self: flex-end;
+    border-radius: 16px;
+    margin: 8px 20px 8px 0;
+    padding: 8px 16px;
+    word-break: break-word;
+    width: 35%;
+}
+
+
+.ForeignMessage {
+    background-color: var(--cararra);
+    align-self: flex-start;
+    border-radius: 16px;
+    margin: 8px 0 8px 20px;
+    padding: 8px 16px;
+    word-break: break-word;
+    width: 35%;
+}
+
+.UserName {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.Text {
+
+}
+
+.message-additional-info{
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+}
+
+.Modified{
+    margin-top: 5px;
+    /* display: flex; */
+    /* align-items: flex-end; */
+}
+.SendTime {
+    grid-column: 3;
+    margin-top: auto;
+    /* display: flex; */
+    /* align-items: flex-end; */
+}
